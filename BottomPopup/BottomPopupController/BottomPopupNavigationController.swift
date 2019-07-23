@@ -68,11 +68,8 @@ open class BottomPopupNavigationController: UINavigationController, BottomPopupA
     }
     
     private func curveTopCorners() {
-        let path = UIBezierPath(roundedRect: self.view.bounds, byRoundingCorners: [.topLeft, .topRight], cornerRadii: CGSize(width: getPopupTopCornerRadius(), height: 0))
-        let maskLayer = CAShapeLayer()
-        maskLayer.frame = self.view.bounds
-        maskLayer.path = path.cgPath
-        self.view.layer.mask = maskLayer
+		view.layer.cornerRadius = getPopupTopCornerRadius()
+		view.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
     }
     
     //MARK: BottomPopupAttributesDelegate Methods
